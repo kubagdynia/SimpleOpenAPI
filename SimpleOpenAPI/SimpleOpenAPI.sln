@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.30413.136
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleOpenAPI.Api", "SimpleOpenAPI.Api\SimpleOpenAPI.Api.csproj", "{9DDA332D-2EB6-49E7-BF97-DF11BED0853B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleOpenAPI.Domain", "SimpleOpenAPI.Domain\SimpleOpenAPI.Domain.csproj", "{2FCFE730-E18E-45A7-8FBF-D08C3F4C2861}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{9DDA332D-2EB6-49E7-BF97-DF11BED0853B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9DDA332D-2EB6-49E7-BF97-DF11BED0853B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9DDA332D-2EB6-49E7-BF97-DF11BED0853B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2FCFE730-E18E-45A7-8FBF-D08C3F4C2861}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2FCFE730-E18E-45A7-8FBF-D08C3F4C2861}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2FCFE730-E18E-45A7-8FBF-D08C3F4C2861}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2FCFE730-E18E-45A7-8FBF-D08C3F4C2861}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

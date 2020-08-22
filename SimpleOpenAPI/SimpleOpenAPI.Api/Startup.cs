@@ -10,6 +10,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using AutoMapper;
+using SimpleOpenAPI.Api.Serializers;
+using SimpleOpenAPI.Domain.Repositories;
 
 namespace SimpleOpenAPI.Api
 {
@@ -25,7 +28,15 @@ namespace SimpleOpenAPI.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
+            services.AddControllers().AddJsonOptions(options =>
+            {
+                options.JsonSerializerOptions.IgnoreNullValues = BaseJsonOptions.IgnoreNullValues;
+                options.JsonSerializerOptions.PropertyNamingPolicy = BaseJsonOptions.PropertyNamingPolicy;
+            });
+
+            services.AddAutoMapper(typeof(Startup));
+
+            services.AddSingleton<IBookRepository, MemoryBookRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
