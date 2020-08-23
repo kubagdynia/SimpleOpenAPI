@@ -11,6 +11,9 @@ using SimpleOpenAPI.Domain.Repositories;
 
 namespace SimpleOpenAPI.Api.Controllers
 {
+    /// <summary>
+    /// Books
+    /// </summary>
     [Route("api/[controller]")]
     [ApiController]
     public class BooksController : ControllerBase

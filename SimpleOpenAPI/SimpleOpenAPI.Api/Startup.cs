@@ -1,16 +1,10 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using AutoMapper;
+using SimpleOpenAPI.Api.Extensions;
 using SimpleOpenAPI.Api.Serializers;
 using SimpleOpenAPI.Domain.Repositories;
 
@@ -37,6 +31,8 @@ namespace SimpleOpenAPI.Api
             services.AddAutoMapper(typeof(Startup));
 
             services.AddSingleton<IBookRepository, MemoryBookRepository>();
+            
+            services.AddSwagger<Startup>(includeXmlComments: true, name: "v1", title: "Book API", version: "v1");
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -52,6 +48,8 @@ namespace SimpleOpenAPI.Api
             app.UseRouting();
 
             app.UseAuthorization();
+            
+            app.UseCustomSwagger("/swagger/v1/swagger.json", "Book API V1");
 
             app.UseEndpoints(endpoints =>
             {
