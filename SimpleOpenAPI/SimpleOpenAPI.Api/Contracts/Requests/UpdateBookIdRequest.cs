@@ -1,6 +1,6 @@
 namespace SimpleOpenAPI.Api.Contracts.Requests
 {
-    public class DeleteBookRequest : BaseIdRequest
+    public class UpdateBookIdRequest : BaseIdRequest
     {
         
     }

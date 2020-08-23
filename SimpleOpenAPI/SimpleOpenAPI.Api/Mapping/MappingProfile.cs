@@ -15,6 +15,7 @@ namespace SimpleOpenAPI.Api.Mapping
             // Resource to Domain
             CreateMap<BookResource, Book>();
             CreateMap<AddBookRequest, Book>();
+            CreateMap<UpdateBookRequest, Book>();
         }
     }
 }

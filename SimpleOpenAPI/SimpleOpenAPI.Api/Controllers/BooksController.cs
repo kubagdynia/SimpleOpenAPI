@@ -86,6 +86,25 @@ namespace SimpleOpenAPI.Api.Controllers
         }
 
         /// <summary>
+        /// Update a book
+        /// </summary>
+        /// <param name="idRequest">Book Id</param>
+        /// <param name="request">Book to be added</param>
+        /// <returns></returns>
+        [HttpPut("{id}")]
+        public ActionResult<UpdateBookResponse> UpdateBook([FromRoute] UpdateBookIdRequest idRequest, UpdateBookRequest request)
+        {
+            var book = _mapper.Map<UpdateBookRequest, Book>(request);
+
+            book.Id = idRequest.Id.ToString();
+            
+            _bookRepository.UpdateBook(book);
+
+            return CreatedAtAction(nameof(GetBook), new GetBookRequest {Id = idRequest.Id},
+                new UpdateBookResponse(idRequest.Id));
+        }
+
+        /// <summary>
         /// Delete a book
         /// </summary>
         /// <param name="request">Book Id</param>
@@ -94,6 +113,6 @@ namespace SimpleOpenAPI.Api.Controllers
         {
             _bookRepository.DeleteBook(request.Id.ToString());
             return NoContent();
-        } 
+        }
     }
 }
