@@ -9,6 +9,7 @@ namespace SimpleOpenAPI.Domain.Repositories
         IEnumerable<Book> GetAllBooks();
         void SaveBook(Book book);
         void DeleteBook(string id);
-        void UpdateBook(Book book);
+        bool UpdateBook(Book book);
+        bool BookExists(string id);
     }
 }

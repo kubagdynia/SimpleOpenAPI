@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using AutoMapper;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SimpleOpenAPI.Api.Contracts.Requests;
 using SimpleOpenAPI.Api.Contracts.Resources;
@@ -30,8 +31,12 @@ namespace SimpleOpenAPI.Api.Controllers
         /// <summary>
         /// Returns a list of all books
         /// </summary>
+        /// <response code="200">Success - Returns a list of all books</response>
+        /// <response code="204">No Content - The are no books</response>
         /// <returns>A list of all books</returns>
         [HttpGet]
+        [ProducesResponseType(type: typeof(GetAllBooksResponse), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
         public ActionResult<GetAllBooksResponse> GetAllBooks()
         {
             var books = _bookRepository.GetAllBooks();
@@ -52,8 +57,12 @@ namespace SimpleOpenAPI.Api.Controllers
         /// Returns the selected book
         /// </summary>
         /// <param name="request">Book Id</param>
+        /// <response code="200">Success - Returns the selected book</response>
+        /// <response code="404">Not Found - Book not found</response>
         /// <returns>Selected book</returns>
         [HttpGet("{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public ActionResult<GetBookResponse> GetBook([FromRoute] GetBookRequest request)
         {
             var book = _bookRepository.GetBook(request.Id.ToString());
@@ -74,8 +83,10 @@ namespace SimpleOpenAPI.Api.Controllers
         /// Add a book
         /// </summary>
         /// <param name="request">Book to be added</param>
+        /// <response code="201">Success - The book has been added</response>
         /// <returns>Book Id</returns>
         [HttpPost]
+        [ProducesResponseType(StatusCodes.Status201Created)]
         public ActionResult<AddBookResponse> AddBook(AddBookRequest request)
         {
             var book = _mapper.Map<AddBookRequest, Book>(request);
@@ -92,26 +103,35 @@ namespace SimpleOpenAPI.Api.Controllers
         /// Update a book
         /// </summary>
         /// <param name="idRequest">Book Id</param>
-        /// <param name="request">Book to be added</param>
+        /// <param name="request">Book to be updated</param>
+        /// <response code="200">Success - The book has been updated</response>
+        /// <response code="204">NoContent - There is no specific book</response>
         /// <returns></returns>
         [HttpPut("{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
         public ActionResult<UpdateBookResponse> UpdateBook([FromRoute] UpdateBookIdRequest idRequest, UpdateBookRequest request)
         {
             var book = _mapper.Map<UpdateBookRequest, Book>(request);
 
             book.Id = idRequest.Id.ToString();
-            
-            _bookRepository.UpdateBook(book);
 
-            return CreatedAtAction(nameof(GetBook), new GetBookRequest {Id = idRequest.Id},
-                new UpdateBookResponse(idRequest.Id));
+            if (_bookRepository.BookExists(book.Id))
+            {
+                _bookRepository.UpdateBook(book);
+                return Ok(new UpdateBookResponse(idRequest.Id));
+            }
+
+            return NoContent();
         }
 
         /// <summary>
         /// Delete a book
         /// </summary>
         /// <param name="request">Book Id</param>
+        /// <response code="204">Success - The book has been deleted</response>
         [HttpDelete("{id}")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
         public IActionResult DeleteBook([FromRoute] DeleteBookRequest request)
         {
             _bookRepository.DeleteBook(request.Id.ToString());

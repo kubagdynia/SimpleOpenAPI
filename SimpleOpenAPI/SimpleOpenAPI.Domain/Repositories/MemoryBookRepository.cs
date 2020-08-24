@@ -20,22 +20,20 @@ namespace SimpleOpenAPI.Domain.Repositories
         public void DeleteBook(string id)
             => _books.RemoveAll(c => c.Id == id);
 
-        public void UpdateBook(Book book)
+        public bool UpdateBook(Book book)
         {
-            if (BookExists(book.Id, out var bookIndex))
+            var bookIndex = _books.FindIndex(c => c.Id == book.Id);
+
+            if (bookIndex >= 0)
             {
                 _books[bookIndex] = book;
+                return true;
             }
-            else
-            {
-                SaveBook(book);
-            }
+
+            return false;
         }
 
-        private bool BookExists(string id, out int bookIndex)
-        {
-            bookIndex = _books.FindIndex(c => c.Id == id);
-            return bookIndex >= 0;
-        }
+        public bool BookExists(string id) 
+            => _books.FindIndex(c => c.Id == id) >= 0;
     }
 }
