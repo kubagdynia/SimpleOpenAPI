@@ -4,6 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using AutoMapper;
+using Microsoft.OpenApi.Models;
 using SimpleOpenAPI.Api.Extensions;
 using SimpleOpenAPI.Api.Serializers;
 using SimpleOpenAPI.Domain.Repositories;
@@ -32,7 +33,8 @@ namespace SimpleOpenAPI.Api
 
             services.AddSingleton<IBookRepository, MemoryBookRepository>();
             
-            services.AddSwagger<Startup>(includeXmlComments: true, name: "v1", title: "Book API", version: "v1");
+            services.AddSwagger<Startup>(includeXmlComments: true, name: "v1", title: "Book API", version: "v1",
+                "API for book management", new OpenApiContact { Email = "apiowner@email.com", Name = "API Owner" });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -1,11 +1,15 @@
 using System;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace SimpleOpenAPI.Api.Contracts.Requests
 {
     public class BookBaseRequest
     {
+        [Required]
         public string Title { get; set; }
         
+        [DefaultValue(0)]
         public int PageCount { get; set; }
         
         public string Isbn { get; set; }

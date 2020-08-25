@@ -10,12 +10,12 @@ using SimpleOpenAPI.Api.Contracts.Responses;
 using SimpleOpenAPI.Domain.Models;
 using SimpleOpenAPI.Domain.Repositories;
 
-namespace SimpleOpenAPI.Api.Controllers
+namespace SimpleOpenAPI.Api.Controllers.V1
 {
     /// <summary>
     /// Books
     /// </summary>
-    [Route("api/[controller]")]
+    [Route("api/v1/[controller]")]
     [ApiController]
     public class BooksController : ControllerBase
     {
@@ -84,9 +84,11 @@ namespace SimpleOpenAPI.Api.Controllers
         /// </summary>
         /// <param name="request">Book to be added</param>
         /// <response code="201">Success - The book has been added</response>
+        /// <response code="400">BadRequest - If the book data are incorrect</response>
         /// <returns>Book Id</returns>
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public ActionResult<AddBookResponse> AddBook(AddBookRequest request)
         {
             var book = _mapper.Map<AddBookRequest, Book>(request);

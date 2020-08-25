@@ -10,15 +10,23 @@ namespace SimpleOpenAPI.Api.Extensions
     public static class IServiceCollectionExtensions
     {
         public static IServiceCollection AddSwagger<T>(this IServiceCollection services, bool includeXmlComments = false,
-            string name = "v1", string title = "API", string version = "v1")
-            => AddSwagger<T>(services, typeof(T).Assembly, includeXmlComments, name, title, version);
+            string name = "v1", string title = "API", string version = "v1", string description = "", OpenApiContact contact = null)
+            => AddSwagger<T>(services, typeof(T).Assembly, includeXmlComments, name, title, version, description, contact);
         
         public static IServiceCollection AddSwagger<T>(this IServiceCollection services, Assembly assembly, bool includeXmlComments = false,
-            string name = "v1", string title = "API", string version = "v1")
+            string name = "v1", string title = "API", string version = "v1", string description = "", OpenApiContact contact = null)
         {
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc(name: name, new OpenApiInfo { Title = title, Version = version });
+                c.SwaggerDoc(name: name, new OpenApiInfo
+                {
+                    Title = title,
+                    Version = version,
+                    Description = description,
+                    Contact = contact
+                });
+                
+                c.IgnoreObsoleteActions();
 
                 if (includeXmlComments)
                 {
