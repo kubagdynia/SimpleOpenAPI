@@ -1,7 +1,7 @@
 using System;
 using SimpleOpenAPI.Api.Contracts.Common;
 
-namespace SimpleOpenAPI.Api.Contracts.Responses
+namespace SimpleOpenAPI.Api.Contracts.V1.Responses
 {
     public abstract class BaseBookResponse : Response<IdResponse>
     {

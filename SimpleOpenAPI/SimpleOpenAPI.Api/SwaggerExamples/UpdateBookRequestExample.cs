@@ -1,5 +1,5 @@
 using System;
-using SimpleOpenAPI.Api.Contracts.Requests;
+using SimpleOpenAPI.Api.Contracts.V1.Requests;
 using Swashbuckle.AspNetCore.Filters;
 
 namespace SimpleOpenAPI.Api.SwaggerExamples

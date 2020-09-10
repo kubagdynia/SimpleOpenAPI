@@ -1,6 +1,6 @@
 using System;
 
-namespace SimpleOpenAPI.Api.Contracts.Responses
+namespace SimpleOpenAPI.Api.Contracts.V1.Responses
 {
     public class IdResponse
     {

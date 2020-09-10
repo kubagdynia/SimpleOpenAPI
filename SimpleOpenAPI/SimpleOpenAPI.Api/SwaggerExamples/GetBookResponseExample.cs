@@ -1,6 +1,6 @@
 using System;
-using SimpleOpenAPI.Api.Contracts.Resources;
-using SimpleOpenAPI.Api.Contracts.Responses;
+using SimpleOpenAPI.Api.Contracts.V1.Resources;
+using SimpleOpenAPI.Api.Contracts.V1.Responses;
 using Swashbuckle.AspNetCore.Filters;
 
 namespace SimpleOpenAPI.Api.SwaggerExamples

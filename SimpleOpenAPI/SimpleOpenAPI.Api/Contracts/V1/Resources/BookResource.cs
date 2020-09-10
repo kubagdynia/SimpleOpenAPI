@@ -1,6 +1,6 @@
 using System;
 
-namespace SimpleOpenAPI.Api.Contracts.Resources
+namespace SimpleOpenAPI.Api.Contracts.V1.Resources
 {
     public class BookResource
     {

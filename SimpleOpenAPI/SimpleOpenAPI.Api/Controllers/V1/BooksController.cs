@@ -4,9 +4,9 @@ using System.Linq;
 using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using SimpleOpenAPI.Api.Contracts.Requests;
-using SimpleOpenAPI.Api.Contracts.Resources;
-using SimpleOpenAPI.Api.Contracts.Responses;
+using SimpleOpenAPI.Api.Contracts.V1.Requests;
+using SimpleOpenAPI.Api.Contracts.V1.Resources;
+using SimpleOpenAPI.Api.Contracts.V1.Responses;
 using SimpleOpenAPI.Domain.Models;
 using SimpleOpenAPI.Domain.Repositories;
 

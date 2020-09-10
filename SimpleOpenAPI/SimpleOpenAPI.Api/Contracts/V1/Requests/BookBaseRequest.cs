@@ -2,7 +2,7 @@ using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace SimpleOpenAPI.Api.Contracts.Requests
+namespace SimpleOpenAPI.Api.Contracts.V1.Requests
 {
     public class BookBaseRequest
     {

@@ -1,6 +1,6 @@
 using AutoMapper;
-using SimpleOpenAPI.Api.Contracts.Requests;
-using SimpleOpenAPI.Api.Contracts.Resources;
+using SimpleOpenAPI.Api.Contracts.V1.Requests;
+using SimpleOpenAPI.Api.Contracts.V1.Resources;
 using SimpleOpenAPI.Domain.Models;
 
 namespace SimpleOpenAPI.Api.Mapping

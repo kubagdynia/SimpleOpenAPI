@@ -1,4 +1,4 @@
-namespace SimpleOpenAPI.Api.Contracts.Requests
+namespace SimpleOpenAPI.Api.Contracts.V1.Requests
 {
     public class GetBookRequest : BaseIdRequest
     {

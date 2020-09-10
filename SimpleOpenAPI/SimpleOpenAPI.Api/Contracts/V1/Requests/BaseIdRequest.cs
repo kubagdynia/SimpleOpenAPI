@@ -1,7 +1,7 @@
 using System;
 using Microsoft.AspNetCore.Mvc;
 
-namespace SimpleOpenAPI.Api.Contracts.Requests
+namespace SimpleOpenAPI.Api.Contracts.V1.Requests
 {
     public abstract class BaseIdRequest
     {

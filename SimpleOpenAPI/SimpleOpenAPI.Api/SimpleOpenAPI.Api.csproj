@@ -26,5 +26,9 @@
   <ItemGroup>
     <ProjectReference Include="..\SimpleOpenAPI.Domain\SimpleOpenAPI.Domain.csproj" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Contracts\V1" />
+  </ItemGroup>
   
 </Project>
