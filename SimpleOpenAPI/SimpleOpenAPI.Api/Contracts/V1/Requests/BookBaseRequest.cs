@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace SimpleOpenAPI.Api.Contracts.V1.Requests
 {
-    public class BookBaseRequest
+    public abstract class BookBaseRequest
     {
         [Required]
         public string Title { get; set; }
