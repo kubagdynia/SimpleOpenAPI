@@ -7,7 +7,7 @@ using Swashbuckle.AspNetCore.Filters;
 
 namespace SimpleOpenAPI.Api.Extensions
 {
-    public static class IServiceCollectionExtensions
+    public static class ServiceCollectionExtensions
     {
         public static IServiceCollection AddSwagger<T>(this IServiceCollection services, bool includeXmlComments = false,
             string name = "v1", string title = "API", string version = "v1", string description = "", OpenApiContact contact = null)
